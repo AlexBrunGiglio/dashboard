@@ -1,0 +1,59 @@
+@import "../../utils/base/variable.scss";
+
+app-layout {
+    .menu-flex {
+        display: flex;
+        flex-direction: row;
+
+        .menu-items {
+            flex-basis: 15%;
+            background-color: #fff;
+            border-right: 1px solid #e6e0e0;
+            height: 100vh;
+
+            .logo {
+                display: flex;
+                justify-content: center;
+            }
+
+            ul {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: baseline;
+                padding: 15px;
+                row-gap: 20px;
+                padding-top: 10vh;
+
+                li {
+                    font-size: 16px;
+
+                    a {
+                        text-decoration: unset;
+                        display: flex;
+                        column-gap: 10px;
+                        align-items: center;
+
+                        &:visited {
+                            color: black;
+                        }
+
+                        &:hover {
+                            color: $main-blue;
+                        }
+                    }
+                }
+            }
+        }
+
+        .page-content {
+            flex-basis: 85%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .router-link-active {
+        color: $main-blue  !important;
+    }
+}

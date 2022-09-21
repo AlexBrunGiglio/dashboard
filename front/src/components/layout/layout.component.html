@@ -1,0 +1,19 @@
+<div class="menu-flex">
+    <div class="menu-items">
+        <div class="logo">
+            <img src="https://alexandrebrungiglio.fr/assets/img/customs/logo.png" style="height: 100px; width: auto;">
+        </div>
+        <ul>
+            <li>
+                <a [routerLink]="['/' + RoutesList.Home]" routerLinkActive="router-link-active">
+                    <i class="fa-solid fa-house"></i>
+                    Accueil
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="page-content">
+        <app-navbar></app-navbar>
+        <ng-content></ng-content>
+    </div>
+</div>

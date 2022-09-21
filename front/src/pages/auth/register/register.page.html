@@ -1,0 +1,64 @@
+<div class="auth-main">
+    <h1>Inscription</h1>
+    <div class="card">
+        <div>
+            <h4>Bienvenue, pour continuer merci de vous authentifier.</h4>
+        </div>
+        <div class="card-input">
+            <tui-tabs class="card-tabs" [(activeItemIndex)]="activeItemIndex">
+                <button [disabled]="loading" tuiTab (click)="onClick('Renseignez les informations de connexion')">
+                    <tui-svg src="tuiIconLoginLarge" class="tui-space_right-2">
+                    </tui-svg>
+                    Compte
+                </button>
+                <button [disabled]="loading" tuiTab (click)="onClick('Renseignez les informations de l\'utilisateur')">
+                    <tui-svg src="tuiIconUser" class="tui-space_right-2"></tui-svg>
+                    Utilisateur
+                </button>
+            </tui-tabs>
+            <div class="card-form">
+                <ng-container *ngIf="activeItemIndex === 0">
+                    <tui-input icon="tuiIconMail" iconAlign="right" [disabled]="loading" name="email"
+                        [(ngModel)]="user.mail">
+                        Votre email
+                        <span class="tui-required"></span>
+                    </tui-input>
+                    <tui-input-password class="tui-space_top-2" [disabled]="loading" name="password"
+                        [(ngModel)]="user.password">
+                        Votre mot de passe
+                        <span class="tui-required"></span>
+                    </tui-input-password>
+                    <tui-input-password class="tui-space_top-2" [disabled]="loading" name="password"
+                        [(ngModel)]="passwordConfirm">
+                        Confirmer le mot de passe
+                        <span class="tui-required"></span>
+                    </tui-input-password>
+                    <p>Vous possédez un compte ? <a [routerLink]="'/' + RoutesList.Login">Connectez-vous.</a>
+                    </p>
+                </ng-container>
+                <ng-container *ngIf="activeItemIndex === 1">
+                    <tui-input icon="tuiIconUser" iconAlign="right" [disabled]="loading" name="firstName"
+                        [(ngModel)]="user.firstname">
+                        Votre prénom
+                    </tui-input>
+                    <tui-input icon="tuiIconUser" class="tui-space_top-2" iconAlign="right" [disabled]="loading"
+                        name="lastName" [(ngModel)]="user.lastname">
+                        Votre nom de famille
+                    </tui-input>
+                    <p>Vous possédez un compte ? <a [routerLink]="'/' + RoutesList.Login">Connectez-vous.</a>
+                    </p>
+                </ng-container>
+            </div>
+            <div class="register-button">
+                <button tuiButton type="button" [showLoader]="loading" (click)="onNextStep(activeItemIndex)">
+                    <ng-container *ngIf="activeItemIndex === 0">
+                        Suivant
+                    </ng-container>
+                    <ng-container *ngIf="activeItemIndex === 1">
+                        Inscription
+                    </ng-container>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

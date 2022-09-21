@@ -1,0 +1,9 @@
+<app-admin-drawer>
+    <ark-list title="Utilisateurs" [items]="arkItems" [isLoading]="loading" (archiveBtnClicked)="archiveItems($event)"
+        [baseEntityUrl]="RoutesList.AdminUsers" entityName="user" (includeArchivedChange)="init()" [request]="request">
+        <tui-input icon="tuiIconUser" iconAlign="right" [(ngModel)]="request.search"
+            (ngModelChange)="loadDataDelayed();" [disabled]="loading" name="searchUser">
+            Rechercher un utilisateur
+        </tui-input>
+    </ark-list>
+</app-admin-drawer>

@@ -1,0 +1,53 @@
+<tui-loader [overlay]="true" [showLoader]="loading">
+    <table tuiTable class="table">
+        <thead>
+            <tr tuiThGroup>
+                <th>
+                    <div class="checkbox-row">
+                        <tui-checkbox [(ngModel)]="selectAll" (ngModelChange)="onSelectAllItem()"
+                            [ngModelOptions]="{standalone:true}">
+                        </tui-checkbox>
+                        <p class="checkbox-title">Tout sélectionner</p>
+                    </div>
+                </th>
+                <th style="width: 50px;">
+                    #
+                </th>
+                <th tuiTh *ngFor="let col of columns">
+                    {{col | titlecase}}
+                </th>
+                <th tuiTh *ngIf="showActionCol">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody tuiTbody>
+            <tr *ngFor="let item of dataListWrapper; let i=index" tuiTr>
+                <td>
+                    <tui-checkbox [(ngModel)]="item.selected" [ngModelOptions]="{standalone:true}"></tui-checkbox>
+                </td>
+                <td style="width: 50px;" (click)="item.selected=!item.selected">
+                    {{i}}
+                </td>
+                <td *ngFor="let col of columns" tuiTd (click)="item.selected=!item.selected">
+                    {{item.data[col]}}
+                </td>
+                <td *ngIf="showActionCol">
+                    <button tuiIconButton appearance="flat" size="s" icon="tuiIconEdit" title="Modifier" shape="rounded"
+                        class="edit" [routerLink]="['/' + editRoute + '/' + item.data.id]"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <tui-table-pagination [total]="100" [(page)]="page" [(size)]="size"></tui-table-pagination>
+</tui-loader>
+
+<div class="table-action-row">
+    <button class="button-s" tuiButton [routerLink]="['/' + editRoute + '/new']" type="button" appearance="primary"
+        icon="tuiIconPlus">
+        Ajouter
+    </button>
+    <button class="button-s" tuiButton type="button" appearance="accent" icon="tuiIconTrash">
+        Supprimer
+    </button>
+</div>

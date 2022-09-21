@@ -1,0 +1,20 @@
+<div class="admin-menu">
+    <div class="routes-menu">
+        <a [routerLink]="['/' + RoutesList.Home]" routerLinkActive="router-link-active">
+            <i class="fa-solid fa-angle-left"></i>
+            Quitter l'administration
+        </a>
+        <a [routerLink]="['/' + RoutesList.AdminHome]" routerLinkActive="router-link-active">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+        <a [routerLink]="['/' + RoutesList.AdminUsers]" routerLinkActive="router-link-active">
+            <i class="fa-solid fa-users"></i>
+            Utilisateurs
+        </a>
+        <a>
+            <i class="fa-solid fa-bug"></i>
+            Logs
+        </a>
+    </div>
+</div>
